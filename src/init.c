@@ -69,7 +69,7 @@ void inicializarJanela( void )
 {
    /* Caracteristicas da janela de saida */
 
-   glutInitWindowSize( 400, 400 ); /* Usar variaveis GLOBAIS para estes parametros */
+   glutInitWindowSize( 1024, 768 ); /* Usar variaveis GLOBAIS para estes parametros */
 
    glutInitWindowPosition( 200, 200 );
 
@@ -108,6 +108,7 @@ void inicializarModelos( void )
   //DrawSphere(20,20, 1.0 , &numVertices, &arrayVertices, &arrayCores);
   //DrawTorus(20,20, 0.5, 1.0, &numVertices, &arrayVertices, &arrayCores);
   DrawParaboloid(1, 0.5 , 500, &numVertices, &arrayVertices, &arrayCores);
+  DrawFunct1(10, &numVertices, &arrayVertices, &arrayCores);
 }
 
 void libertarArraysGlobais( void )

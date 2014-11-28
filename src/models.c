@@ -286,8 +286,6 @@ void DrawParaboloid(GLfloat radius,
                     GLfloat** arrayVertices,
                     GLfloat** arrayCores)
 {
-  fflush(stdout);
-
   GLfloat* coordenadas;
 
   GLfloat* cores;
@@ -322,10 +320,10 @@ void DrawParaboloid(GLfloat radius,
   unsigned int i;
   unsigned int j;
 
-  fflush(stdout);
-
-  for(i = 0; i < levels; ++i) {
-    for(j = 0; j < point_on_level; ++j) {
+  for(i = 0; i < levels; ++i)
+    {
+    for(j = 0; j < point_on_level; ++j)
+      {
       phi = j * radius_angle_delta;
       coordenadas[idx + 2] = height_delta * i;
       cradius = A * sqrt(coordenadas[idx + 2]);
@@ -358,6 +356,66 @@ void DrawParaboloid(GLfloat radius,
   cores[idx] = 0.0;
   cores[idx + 1] = 0.0;
   cores[idx + 2] = 1.0;
+}
 
-  fflush(stdout);
+void DrawFunct1(GLfloat levels,
+                int* numVertices,
+                GLfloat** arrayVertices,
+                GLfloat** arrayCores)
+{
+
+  GLfloat* coordenadas;
+
+  GLfloat* cores;
+
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+  GLfloat stepsize = 0.1;
+
+  int n = (int) ((levels / stepsize) +1)* ((levels / stepsize) +1) * 2;
+  printf("n: %d", n);
+  printf("\n");
+
+  *numVertices = n;
+
+  *arrayVertices = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
+
+  coordenadas = *arrayVertices;
+
+  /* Cores ( R, G, B ) dos vertices */
+
+  *arrayCores = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
+
+  cores = *arrayCores;
+  GLfloat i;
+  GLfloat j;
+  unsigned int idx = 0;
+  int npontos = 0;
+  for(i = (float) -(levels/2); i < (float) levels/2; i += stepsize)
+    {
+      for(j =  (float) -(levels/2); j < (float) levels/2; j += stepsize)
+        {
+          coordenadas[idx] = (float) i;
+          coordenadas[idx + 1] = (float) j;
+          coordenadas[idx + 2] = sin(j * cos(i));
+
+          cores[idx] = 0.0;
+          cores[idx + 1] = 0.0;
+          cores[idx + 2] = 1.0;
+          idx += 3;
+
+          coordenadas[idx] = (float) (i + stepsize);
+          coordenadas[idx + 1] = (float) j;
+          coordenadas[idx + 2] = sin(j * cos(i + stepsize));
+
+          cores[idx] = 0.0;
+          cores[idx + 1] = 0.0;
+          cores[idx + 2] = 1.0;
+          idx += 3;
+          npontos += 2;
+        }
+    }
+  printf("npontos: %d", npontos);
+  printf("\n");
+  fflush (stdout);
 }
