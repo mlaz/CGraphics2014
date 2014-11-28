@@ -30,69 +30,70 @@
 
 void lerDeFicheiro( char* nome, int* numVertices, GLfloat** arrayVertices, GLfloat** arrayCores )
 {
-    int i;
+  int i;
 
-    int j;
+  int j;
 
-    int n;
+  int n;
 
-    int indexArrayCoords;
+  int indexArrayCoords;
 
-    int indexArrayRGB;
+  int indexArrayRGB;
 
-    GLfloat* coordenadas;
+  GLfloat* coordenadas;
 
-    GLfloat* cores;
+  GLfloat* cores;
 
-    FILE* fp = fopen( nome, "r");
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  FILE* fp = fopen( nome, "r");
 
-    if ( fp == NULL )
+  if ( fp == NULL )
     {
-        fprintf( stderr, "ERRO na leitura do ficheiro %s\n", nome );
+      fprintf( stderr, "ERRO na leitura do ficheiro %s\n", nome );
 
-        exit( EXIT_FAILURE );
+      exit( EXIT_FAILURE );
     }
 
-    /* Ler o numero de vertices */
+  /* Ler o numero de vertices */
 
-    fscanf( fp, "%d", &n );
+  fscanf( fp, "%d", &n );
 
-    *numVertices = n;
+  *numVertices = n;
 
-    /* Criar os arrays */
+  /* Criar os arrays */
 
-    /* Coordenadas ( x, y, z ) dos vertices */
+  /* Coordenadas ( x, y, z ) dos vertices */
 
-    *arrayVertices = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
+  *arrayVertices = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
 
-    coordenadas = *arrayVertices;
+  coordenadas = *arrayVertices;
 
-    /* Cores ( R, G, B ) dos vertices */
+  /* Cores ( R, G, B ) dos vertices */
 
-    *arrayCores = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
+  *arrayCores = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
 
-    cores = *arrayCores;
+  cores = *arrayCores;
 
-    /* Ler a informacao de cada vertice */
+  /* Ler a informacao de cada vertice */
 
-    indexArrayCoords = 0;
+  indexArrayCoords = 0;
 
-    indexArrayRGB = 0;
+  indexArrayRGB = 0;
 
-    for( i = 0; i < n; i++ )
+  for( i = 0; i < n; i++ )
     {
-        for( j = 0; j < 3; j++ )
+      for( j = 0; j < 3; j++ )
         {
-            fscanf( fp, "%f", &( coordenadas[ indexArrayCoords++ ] ) );
+          fscanf( fp, "%f", &( coordenadas[ indexArrayCoords++ ] ) );
         }
 
-        for( j = 0; j < 3; j++ )
+      for( j = 0; j < 3; j++ )
         {
-            fscanf( fp, "%f", &( cores[ indexArrayRGB++ ] ) );
+          fscanf( fp, "%f", &( cores[ indexArrayRGB++ ] ) );
         }
     }
 
-    fclose( fp );
+  fclose( fp );
 }
 
 void DrawEllipsoid(unsigned int uiStacks,
@@ -158,10 +159,10 @@ void DrawEllipsoid(unsigned int uiStacks,
 
 
 void DrawSphere(unsigned int uiStacks,
-                   unsigned int uiSlices,
-                   float radius,
-                   int* numVertices,
-                   GLfloat** arrayVertices, GLfloat** arrayCores)
+                unsigned int uiSlices,
+                float radius,
+                int* numVertices,
+                GLfloat** arrayVertices, GLfloat** arrayCores)
 {
   GLfloat* coordenadas;
 
