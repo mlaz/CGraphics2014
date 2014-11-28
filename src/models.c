@@ -278,3 +278,78 @@ void DrawTorus(unsigned int uiStacks,
         }
     }
 }
+
+void DrawParaboloid(GLfloat radius,
+                    GLfloat A,
+                    unsigned precession,
+                    int* numVertices,
+                    GLfloat** arrayVertices,
+                    GLfloat** arrayCores)
+{
+  printf("hello\n");
+  fflush(stdout);
+
+  GLfloat* coordenadas;
+
+  GLfloat* cores;
+
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+  unsigned levels = precession / 25;
+  unsigned point_on_level = precession / levels;
+
+  GLfloat height = radius * 2;
+  GLfloat height_delta = height / levels;
+  GLfloat base = -radius;
+
+  GLfloat radius_angle_delta = 2 * PI /( (float) point_on_level);
+
+  int n = levels * point_on_level * 2;
+
+  *numVertices = n;
+
+  *arrayVertices = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
+
+  coordenadas = *arrayVertices;
+
+  /* Cores ( R, G, B ) dos vertices */
+
+  *arrayCores = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
+
+  cores = *arrayCores;
+  GLfloat phi;
+  GLfloat cradius;
+  int idx = 0;
+  unsigned int i;
+  unsigned int j;
+  printf("hello\n");
+  fflush(stdout);
+
+  for(i = 0; i < levels; ++i) {
+    for(j = 0; j < point_on_level; ++j) {
+      phi = j * radius_angle_delta;
+      coordenadas[idx + 2] = height_delta * i;
+      cradius = A * sqrt(coordenadas[idx + 2]);
+      coordenadas[idx + 2] += base;
+      coordenadas[idx] = cradius * cos(phi);
+      coordenadas[idx + 1] = cradius * sin(phi);
+      cores[idx] = 0.0;
+      cores[idx + 1] = 0.0;
+      cores[idx + 2] = 1.0;
+      idx += 3;
+
+      phi = j * radius_angle_delta;
+      coordenadas[idx + 2] = height_delta * (i + 1);
+      cradius = A * sqrt(coordenadas[idx + 2]);
+      coordenadas[idx + 2] += base;
+      coordenadas[idx] = cradius * cos(phi);
+      coordenadas[idx + 1] = cradius * sin(phi);
+      cores[idx] = 0.0;
+      cores[idx + 1] = 0.0;
+      cores[idx + 2] = 1.0;
+      idx += 3;
+    }
+  }
+  printf("hello\n");
+  fflush(stdout);
+}

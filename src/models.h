@@ -38,4 +38,11 @@ void DrawTorus(unsigned int uiStacks,
                float raxial,
                int* numVertices,
                GLfloat** arrayVertices, GLfloat** arrayCores);
+
+void DrawParaboloid(GLfloat radius,
+                    GLfloat A,
+                    unsigned precession,
+                    int* numVertices,
+                    GLfloat** arrayVertices,
+                    GLfloat** arrayCores);
 #endif

@@ -106,7 +106,8 @@ void inicializarModelos( void )
   //lerDeFicheiro( "cubo.txt", &numVertices, &arrayVertices, &arrayCores );
   //DrawEllipsoid(20,20, 1.0 , 1.0, 2.0, &numVertices, &arrayVertices, &arrayCores);
   //DrawSphere(20,20, 1.0 , &numVertices, &arrayVertices, &arrayCores);
-  DrawTorus(20,20, 0.5, 1.0, &numVertices, &arrayVertices, &arrayCores);
+  //DrawTorus(20,20, 0.5, 1.0, &numVertices, &arrayVertices, &arrayCores);
+  DrawParaboloid(2, 3, 500, &numVertices, &arrayVertices, &arrayCores);
 }
 
 void libertarArraysGlobais( void )
