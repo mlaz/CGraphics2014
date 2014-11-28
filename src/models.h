@@ -25,4 +25,17 @@ void DrawEllipsoid(unsigned int uiStacks,
                    float fA, float fB, float fC,
                    int* numVertices,
                    GLfloat** arrayVertices, GLfloat** arrayCores);
+
+void DrawSphere(unsigned int uiStacks,
+                unsigned int uiSlices,
+                float radius,
+                int* numVertices,
+                GLfloat** arrayVertices, GLfloat** arrayCores);
+
+void DrawTorus(unsigned int uiStacks,
+               unsigned int uiSlices,
+               float radius,
+               float raxial,
+               int* numVertices,
+               GLfloat** arrayVertices, GLfloat** arrayCores);
 #endif

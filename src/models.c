@@ -155,3 +155,125 @@ void DrawEllipsoid(unsigned int uiStacks,
     }
 
 }
+
+
+void DrawSphere(unsigned int uiStacks,
+                   unsigned int uiSlices,
+                   float radius,
+                   int* numVertices,
+                   GLfloat** arrayVertices, GLfloat** arrayCores)
+{
+  GLfloat* coordenadas;
+
+  GLfloat* cores;
+
+  float tStep = (PI) / (float)uiSlices;
+  float sStep = (PI) / (float)uiStacks;
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+  int ntstep =  (((PI/2)+.0001 + PI/2) / tStep) + 1;
+  int nsstep = ((PI+.0001 + PI) / sStep) + 1;
+  int n = ntstep * nsstep * 2;
+
+  *numVertices = n;
+
+  *arrayVertices = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
+
+  coordenadas = *arrayVertices;
+
+  /* Cores ( R, G, B ) dos vertices */
+
+  *arrayCores = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
+
+  cores = *arrayCores;
+
+  float t;
+  float s;
+  int idx = 0;
+  for(t = -PI/2; t <= (PI/2)+.0001; t += tStep)
+    {
+      for(s = -PI; s <= PI+.0001; s += sStep)
+        {
+          coordenadas[idx] = radius * cos(t) * cos(s); //x
+          cores[idx] = 0.0; //r
+          idx++;
+          coordenadas[idx] = radius * cos(t) * sin(s); //y
+          cores[idx] = 0.0; //g
+          idx++;
+          coordenadas[idx] = radius * sin(t); //z
+          cores[idx] = 1.0; //b
+          idx++;
+
+          coordenadas[idx] = radius * cos(t+tStep) * cos(s); //x
+          cores[idx] = 0.0; //r
+          idx++;
+          coordenadas[idx] = radius * cos(t+tStep) * sin(s); //y
+          cores[idx] = 0.0; //g
+          idx++;
+          coordenadas[idx] = radius * sin(t+tStep); //z
+          cores[idx] = 1.0; //b
+          idx++;
+        }
+    }
+}
+
+void DrawTorus(unsigned int uiStacks,
+               unsigned int uiSlices,
+               float radius,
+               float raxial,
+               int* numVertices,
+               GLfloat** arrayVertices, GLfloat** arrayCores)
+{
+  GLfloat* coordenadas;
+
+  GLfloat* cores;
+
+  float tStep = (PI) / (float)uiSlices;
+  float sStep = (PI) / (float)uiStacks;
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+  int ntstep = ((PI+.0001 + PI) / tStep) + 1;
+  int nsstep = ((PI+.0001 + PI) / sStep) + 1;
+  int n = ntstep * nsstep * 2;
+
+  *numVertices = n;
+
+  *arrayVertices = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
+
+  coordenadas = *arrayVertices;
+
+  /* Cores ( R, G, B ) dos vertices */
+
+  *arrayCores = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
+
+  cores = *arrayCores;
+
+  float t;
+  float s;
+  int idx = 0;
+  for(t = -PI; t <= PI+.0001; t += tStep)
+    {
+      for(s = -PI; s <= PI+.0001; s += sStep)
+        {
+          coordenadas[idx] = (raxial + (radius * cos(t))) * cos(s); //x
+          cores[idx] = 0.0; //r
+          idx++;
+          coordenadas[idx] = (raxial + (radius * cos(t))) * sin(s); //y
+          cores[idx] = 0.0; //g
+          idx++;
+          coordenadas[idx] = radius * sin(t); //z
+          cores[idx] = 1.0; //b
+          idx++;
+
+          coordenadas[idx] = (raxial + (radius * cos(t + tStep))) * cos(s); //x
+          cores[idx] = 0.0; //r
+          idx++;
+          coordenadas[idx] = (raxial + (radius * cos(t + tStep))) * sin(s); //y
+          cores[idx] = 0.0; //g
+          idx++;
+          coordenadas[idx] = radius * sin(t + tStep); //z
+          cores[idx] = 1.0; //b
+          idx++;
+        }
+    }
+}
