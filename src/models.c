@@ -286,7 +286,6 @@ void DrawParaboloid(GLfloat radius,
                     GLfloat** arrayVertices,
                     GLfloat** arrayCores)
 {
-  printf("hello\n");
   fflush(stdout);
 
   GLfloat* coordenadas;
@@ -304,7 +303,7 @@ void DrawParaboloid(GLfloat radius,
 
   GLfloat radius_angle_delta = 2 * PI /( (float) point_on_level);
 
-  int n = levels * point_on_level * 2;
+  int n = levels * point_on_level * 2 + 1;
 
   *numVertices = n;
 
@@ -322,7 +321,7 @@ void DrawParaboloid(GLfloat radius,
   int idx = 0;
   unsigned int i;
   unsigned int j;
-  printf("hello\n");
+
   fflush(stdout);
 
   for(i = 0; i < levels; ++i) {
@@ -350,6 +349,15 @@ void DrawParaboloid(GLfloat radius,
       idx += 3;
     }
   }
-  printf("hello\n");
+  phi = j * radius_angle_delta;
+  coordenadas[idx + 2] = height_delta * i;
+  cradius = A * sqrt(coordenadas[idx + 2]);
+  coordenadas[idx + 2] += base;
+  coordenadas[idx] = cradius * cos(phi);
+  coordenadas[idx + 1] = cradius * sin(phi);
+  cores[idx] = 0.0;
+  cores[idx + 1] = 0.0;
+  cores[idx + 2] = 1.0;
+
   fflush(stdout);
 }
