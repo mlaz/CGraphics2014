@@ -46,8 +46,24 @@ void DrawParaboloid(GLfloat radius,
                     GLfloat** arrayVertices,
                     GLfloat** arrayCores);
 
-void DrawFunct1(GLfloat levels,
+void DrawFunct1(GLfloat factor,
                 int* numVertices,
                 GLfloat** arrayVertices,
                 GLfloat** arrayCores);
+
+void DrawFunct2(GLfloat factor,
+                int* numVertices,
+                GLfloat** arrayVertices,
+                GLfloat** arrayCores);
+
+void DrawFunct3(GLfloat factor,
+                int* numVertices,
+                GLfloat** arrayVertices,
+                GLfloat** arrayCores);
+
+void DrawFunct4(GLfloat factor,
+                int* numVertices,
+                GLfloat** arrayVertices,
+                GLfloat** arrayCores);
+
 #endif
