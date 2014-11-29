@@ -48,11 +48,16 @@ typedef struct menuItemStruct {
 
 static menuItemStruct menu1[] = {
 
-                {"Tetraedro",           '1'},
-				{"Cubo",                '2'},
-				{"--------------   ",   '-'},
-				{"Proj. Paralela",      'O'},
-				{"Proj. Perspectiva",   'P'}
+                {"----------Quadrics----------", '-'},
+                {"Ellipsoid",                    '1'},
+				{"Sphere",                       '2'},
+                {"Torus",                        '3'},
+                {"Paraboloid",                   '4'},
+				{"---------Functions---------",  '-'},
+                {"f(x,y) = sen(y * a * cos(x))", '5'},
+                {"z(b,x,y) = b * (x^2 + y^2)",   '6'},
+                {"z(x,y) = x exp( - x^2 - y^2)", '7'},
+                {"z(x,y) = a * sin(x) * cos(y)", '8'}
 };
 
 int numItensMenu1 = sizeof( menu1 ) / sizeof( menuItemStruct );
@@ -61,7 +66,9 @@ int numItensMenu1 = sizeof( menu1 ) / sizeof( menuItemStruct );
 
 static menuItemStruct menu2[] = {
 
-				{"Sair",          '1'}
+                {"Parallel Projection",      'O'},
+                {"Perspective Projection",   'P'},
+				{"Quit application",         '1'}
 };
 
 int numItensMenu2 = sizeof( menu2 ) / sizeof( menuItemStruct );
@@ -76,56 +83,61 @@ static void myMenuEsq( int i )
 	switch( menu1[i].val ) {
 
 	case '1' :
-
-        libertarArraysGlobais();
-
-        lerDeFicheiro( "tetraedro.txt", &numVertices, &arrayVertices, &arrayCores );
-
-        /* Valores iniciais dos parametros das transformacoes */
-
-        anguloRotXX = 0;
-
-        anguloRotYY = 0;
-
-        anguloRotZZ = 0;
-
-        factorEscX = 0.3;
-
-        factorEscY = 0.3;
-
-        factorEscZ = 0.3;
-
+        DrawEllipsoid(20,20, 1.0 , 1.0, 2.0, &numVertices, &arrayVertices, &arrayCores);
+        
 		break;
 
 	case '2' :
-
-        libertarArraysGlobais();
-
-        lerDeFicheiro( "cubo.txt", &numVertices, &arrayVertices, &arrayCores );
-
-        /* Valores iniciais dos parametros das transformacoes */
-
-        anguloRotXX = 0;
-
-        anguloRotYY = 0;
-
-        anguloRotZZ = 0;
-
-        factorEscX = 0.3;
-
-        factorEscY = 0.3;
-
-        factorEscZ = 0.3;
+        DrawSphere(20,20, 1.0 , &numVertices, &arrayVertices, &arrayCores);
 
 		break;
 
-	case 'O' :
+    case '3':
+        DrawTorus(20,20, 0.5, 1.0, &numVertices, &arrayVertices, &arrayCores);
+
+        break;
+
+    case '4':
+        DrawParaboloid(1, 0.5 , 500, &numVertices, &arrayVertices, &arrayCores);
+
+        break;
+
+    case '5':
+        DrawFunct1(1, &numVertices, &arrayVertices, &arrayCores);
+
+        break;
+
+    case '6':
+        DrawFunct2(0.5, &numVertices, &arrayVertices, &arrayCores);
+
+        break;
+
+    case '7':
+        DrawFunct3(10, &numVertices, &arrayVertices, &arrayCores);
+
+        break;
+
+    case '8':
+        DrawFunct4(3, &numVertices, &arrayVertices, &arrayCores);
+
+        break;
+
+    }
+
+	glutPostRedisplay();
+}
+
+static void myMenuDir( int i )
+{
+	switch( menu2[i].val ) {
+
+    case 'O' :
 
         matrizProj = IDENTITY_MATRIX;
 
-		break;
+        break;
 
-	case 'P' :
+    case 'P' :
 
         matrizProj = CreateProjectionMatrix( 60, 1, 1, 50 );
 
@@ -135,15 +147,7 @@ static void myMenuEsq( int i )
 
         glutPostRedisplay();
 
-		break;
-	}
-
-	glutPostRedisplay();
-}
-
-static void myMenuDir( int i )
-{
-	switch( menu2[i].val ) {
+        break;
 
 	case '1' :
 

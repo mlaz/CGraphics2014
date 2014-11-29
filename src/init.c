@@ -47,7 +47,11 @@ void inicializarEstado( void )
 
    /* Matriz de projeccao é inicialmente a IDENTIDADE => Proj. Paralela Ortogonal */
 
-   matrizProj = IDENTITY_MATRIX;
+   // matrizProj = IDENTITY_MATRIX;
+
+   //Start with perspective projection
+   matrizProj = CreateProjectionMatrix( 60, 1, 1, 50 );
+   Translate( &matrizProj, 0, 0, -5 );
 
    /* Parametros das transformacoes */
 
@@ -69,9 +73,9 @@ void inicializarJanela( void )
 {
    /* Caracteristicas da janela de saida */
 
-   glutInitWindowSize( 1024, 768 ); /* Usar variaveis GLOBAIS para estes parametros */
+   // glutInitWindowSize( 1024, 768 ); /* Usar variaveis GLOBAIS para estes parametros */
 
-   glutInitWindowPosition( 200, 200 );
+   // glutInitWindowPosition( 200, 200 );
 
    /* Para terminar de modo apropriado */
 
@@ -86,6 +90,8 @@ void inicializarJanela( void )
    /* Criar a janela de saida */
 
    windowHandle = glutCreateWindow( "3D Surfaces" );
+   //Fullscreen mode
+   glutEnterGameMode();
 
    if( windowHandle < 1 )
    {
