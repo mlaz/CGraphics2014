@@ -20,6 +20,8 @@
 
 void lerDeFicheiro( char* nome, int* numVertices, GLfloat** arrayVertices, GLfloat** arrayCores );
 
+void escreverEmFicheiro( char* nome, int numVertices, GLfloat** arrayVertices, GLfloat** arrayCores );
+
 void DrawEllipsoid(unsigned int uiStacks,
                    unsigned int uiSlices,
                    float fA, float fB, float fC,

@@ -96,6 +96,64 @@ void lerDeFicheiro( char* nome, int* numVertices, GLfloat** arrayVertices, GLflo
   fclose( fp );
 }
 
+void escreverEmFicheiro( char* nome, int numVertices, GLfloat** arrayVertices, GLfloat** arrayCores )
+{
+  int i;
+
+  int j;
+
+  int n;
+
+  int indexArrayCoords;
+
+  int indexArrayRGB;
+
+  GLfloat* coordenadas;
+
+  GLfloat* cores;
+
+
+  FILE* fp = fopen( nome, "w");
+
+  if ( fp == NULL )
+    {
+      fprintf( stderr, "ERRO na leitura do ficheiro %s\n", nome );
+
+      exit( EXIT_FAILURE );
+    }
+
+  /* Escrever o numero de vertices */
+  n = numVertices;
+  fprintf( fp, "%d\n", n );
+
+  /* Escrever a informacao de cada vertice */
+
+  cores = *arrayCores;
+  coordenadas = *arrayVertices;
+
+  indexArrayCoords = 0;
+
+  indexArrayRGB = 0;
+
+  for( i = 0; i < n; i++ )
+    {
+      for( j = 0; j < 3; j++ )
+        {
+          fprintf( fp, "%f", coordenadas[ indexArrayCoords++ ] );
+          fprintf( fp, " ");
+        }
+
+      for( j = 0; j < 3; j++ )
+        {
+          fprintf( fp, "%f",  cores[ indexArrayRGB++ ] );
+          fprintf( fp, " ");
+        }
+      fprintf( fp, "\n");
+    }
+
+  fclose( fp );
+}
+
 void DrawEllipsoid(unsigned int uiStacks,
                    unsigned int uiSlices,
                    float fA, float fB, float fC,
