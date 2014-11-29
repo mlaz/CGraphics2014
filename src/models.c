@@ -358,7 +358,7 @@ void DrawParaboloid(GLfloat radius,
   cores[idx + 2] = 1.0;
 }
 
-void DrawFunct1(GLfloat levels,
+void DrawFunct1(GLfloat factor,
                 int* numVertices,
                 GLfloat** arrayVertices,
                 GLfloat** arrayCores)
@@ -370,12 +370,11 @@ void DrawFunct1(GLfloat levels,
 
   glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+  GLfloat levels = 10;
+
   GLfloat stepsize = 0.1;
 
-  int n = (int) ((levels / stepsize) +1)* ((levels / stepsize) +1) * 2;
-  printf("n: %d", n);
-  printf("\n");
-
+  int n = 20503;
   *numVertices = n;
 
   *arrayVertices = (GLfloat*) malloc( 3 * n * sizeof( GLfloat ) );
@@ -391,31 +390,79 @@ void DrawFunct1(GLfloat levels,
   GLfloat j;
   unsigned int idx = 0;
   int npontos = 0;
-  for(i = (float) -(levels/2); i < (float) levels/2; i += stepsize)
+  int increm = 1;
+  for(i = (float) -(levels/2); i <= (float) levels/2; i += stepsize)
     {
-      for(j =  (float) -(levels/2); j < (float) levels/2; j += stepsize)
+      if (increm == 1)
         {
+          for(j =  (float) -(levels/2); j <=  (float) levels/2; j += stepsize)
+            {
+              coordenadas[idx] = (float) i;
+              coordenadas[idx + 1] = (float) j;
+              coordenadas[idx + 2] = sin(j * factor * cos(i));
+
+              cores[idx] = 0.0;
+              cores[idx + 1] = 0.0;
+              cores[idx + 2] = 1.0;
+              idx += 3;
+
+              coordenadas[idx] = (float) (i + stepsize);
+              coordenadas[idx + 1] = (float) j;
+              coordenadas[idx + 2] = sin(j * factor *cos(i + stepsize));
+
+              cores[idx] = 0.0;
+              cores[idx + 1] = 0.0;
+              cores[idx + 2] = 1.0;
+              idx += 3;
+              npontos += 2;
+            }
           coordenadas[idx] = (float) i;
-          coordenadas[idx + 1] = (float) j;
-          coordenadas[idx + 2] = sin(j * cos(i));
+          coordenadas[idx + 1] = (float) (j - stepsize);
+          coordenadas[idx + 2] = sin((j - stepsize) * 1 * cos(i));
 
           cores[idx] = 0.0;
           cores[idx + 1] = 0.0;
           cores[idx + 2] = 1.0;
           idx += 3;
+          npontos += 1;
+          increm = 0;
+        }
+      else
+        {
+          for(j = (float) levels/2; j >= (float) (-levels/2); j -= stepsize)
+            {
+              coordenadas[idx] = (float) i;
+              coordenadas[idx + 1] = (float) j;
+              coordenadas[idx + 2] = sin(j * factor * cos(i));
 
-          coordenadas[idx] = (float) (i + stepsize);
-          coordenadas[idx + 1] = (float) j;
-          coordenadas[idx + 2] = sin(j * cos(i + stepsize));
+              cores[idx] = 0.0;
+              cores[idx + 1] = 0.0;
+              cores[idx + 2] = 1.0;
+              idx += 3;
+
+              coordenadas[idx] = (float) (i + stepsize);
+              coordenadas[idx + 1] = (float) j;
+              coordenadas[idx + 2] = sin(j * factor *cos(i + stepsize));
+
+              cores[idx] = 0.0;
+              cores[idx + 1] = 0.0;
+              cores[idx + 2] = 1.0;
+              idx += 3;
+              npontos += 2;
+            }
+          coordenadas[idx] = (float) i;
+          coordenadas[idx + 1] = (float) (j + stepsize);
+          coordenadas[idx + 2] = sin((j + stepsize) * 1 * cos(i));
 
           cores[idx] = 0.0;
           cores[idx + 1] = 0.0;
           cores[idx + 2] = 1.0;
           idx += 3;
-          npontos += 2;
+          npontos += 1;
+          increm = 1;
         }
     }
-  printf("npontos: %d", npontos);
-  printf("\n");
-  fflush (stdout);
+  /* printf("npontos: %d", npontos); */
+  /* printf("\n"); */
+  /* fflush (stdout); */
 }

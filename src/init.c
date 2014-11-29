@@ -85,7 +85,7 @@ void inicializarJanela( void )
 
    /* Criar a janela de saida */
 
-   windowHandle = glutCreateWindow( "OpenGL_ex_09" );
+   windowHandle = glutCreateWindow( "3D Surfaces" );
 
    if( windowHandle < 1 )
    {
@@ -107,8 +107,8 @@ void inicializarModelos( void )
   //DrawEllipsoid(20,20, 1.0 , 1.0, 2.0, &numVertices, &arrayVertices, &arrayCores);
   //DrawSphere(20,20, 1.0 , &numVertices, &arrayVertices, &arrayCores);
   //DrawTorus(20,20, 0.5, 1.0, &numVertices, &arrayVertices, &arrayCores);
-  DrawParaboloid(1, 0.5 , 500, &numVertices, &arrayVertices, &arrayCores);
-  DrawFunct1(10, &numVertices, &arrayVertices, &arrayCores);
+  //DrawParaboloid(1, 0.5 , 500, &numVertices, &arrayVertices, &arrayCores);
+  DrawFunct1(1, &numVertices, &arrayVertices, &arrayCores);
 }
 
 void libertarArraysGlobais( void )
