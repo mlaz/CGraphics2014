@@ -76,4 +76,6 @@ GLfloat factorEscY;
 
 GLfloat factorEscZ;
 
+int activeMode;
+
 #endif

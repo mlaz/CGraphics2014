@@ -73,9 +73,9 @@ void inicializarJanela( void )
 {
    /* Caracteristicas da janela de saida */
 
-   // glutInitWindowSize( 1024, 768 ); /* Usar variaveis GLOBAIS para estes parametros */
+   glutInitWindowSize( 1024, 1024 ); /* Usar variaveis GLOBAIS para estes parametros */
 
-   // glutInitWindowPosition( 200, 200 );
+   glutInitWindowPosition( 200, 0 );
 
    /* Para terminar de modo apropriado */
 
@@ -91,7 +91,7 @@ void inicializarJanela( void )
 
    windowHandle = glutCreateWindow( "3D Surfaces" );
    //Fullscreen mode
-   glutEnterGameMode();
+   // glutEnterGameMode();
 
    if( windowHandle < 1 )
    {
@@ -110,15 +110,16 @@ void inicializarJanela( void )
 void inicializarModelos( void )
 {
   //lerDeFicheiro( "cubo.txt", &numVertices, &arrayVertices, &arrayCores );
-  //DrawEllipsoid(20,20, 1.0 , 1.0, 2.0, &numVertices, &arrayVertices, &arrayCores);
+  DrawEllipsoid(20,20, 1.0 , 1.0, 2.0, &numVertices, &arrayVertices, &arrayCores);
   //DrawSphere(20,20, 1.0 , &numVertices, &arrayVertices, &arrayCores);
-  DrawTorus(20,20, 0.5, 1.0, &numVertices, &arrayVertices, &arrayCores);
+  // DrawTorus(20,20, 0.5, 1.0, &numVertices, &arrayVertices, &arrayCores);
   //DrawParaboloid(1, 0.5 , 500, &numVertices, &arrayVertices, &arrayCores);
   //DrawFunct1(1, &numVertices, &arrayVertices, &arrayCores);
   //DrawFunct2(0.5, numVertices, &arrayVertices, &arrayCores);
   //DrawFunct3(10, &numVertices, &arrayVertices, &arrayCores);
   //DrawFunct4(3, &numVertices, &arrayVertices, &arrayCores);
   //escreverEmFicheiro( "cubo.txt", numVertices,  &arrayVertices, &arrayCores );
+  activeMode=1;
 }
 
 void libertarArraysGlobais( void )

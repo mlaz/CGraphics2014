@@ -55,9 +55,11 @@ static menuItemStruct menu1[] = {
                 {"Paraboloid",                   '4'},
 				{"---------Functions---------",  '-'},
                 {"f(x,y) = sen(y * a * cos(x))", '5'},
-                {"z(b,x,y) = b * (x^2 + y^2)",   '6'},
+                {"z(x,y) = b * (x^2 + y^2)",     '6'},
                 {"z(x,y) = x exp( - x^2 - y^2)", '7'},
-                {"z(x,y) = a * sin(x) * cos(y)", '8'}
+                {"z(x,y) = a * sin(x) * cos(y)", '8'},
+                {"---------------------------",  '-'},
+                {"Change equation parameters"  , '9'}
 };
 
 int numItensMenu1 = sizeof( menu1 ) / sizeof( menuItemStruct );
@@ -66,8 +68,13 @@ int numItensMenu1 = sizeof( menu1 ) / sizeof( menuItemStruct );
 
 static menuItemStruct menu2[] = {
 
+                {"------Projections------",  '-'},
                 {"Parallel Projection",      'O'},
                 {"Perspective Projection",   'P'},
+                {"------Operations------",   '-'},
+                {"Load Model",               'L'},
+                {"Save Model",               'S'},
+                {"----------------------",   '-'},
 				{"Quit application",         '1'}
 };
 
@@ -84,41 +91,127 @@ static void myMenuEsq( int i )
 
 	case '1' :
         DrawEllipsoid(20,20, 1.0 , 1.0, 2.0, &numVertices, &arrayVertices, &arrayCores);
-        
+        activeMode=1;
 		break;
 
 	case '2' :
         DrawSphere(20,20, 1.0 , &numVertices, &arrayVertices, &arrayCores);
-
+        activeMode=2;
 		break;
 
     case '3':
         DrawTorus(20,20, 0.5, 1.0, &numVertices, &arrayVertices, &arrayCores);
-
+        activeMode=3;
         break;
 
     case '4':
         DrawParaboloid(1, 0.5 , 500, &numVertices, &arrayVertices, &arrayCores);
-
+        activeMode=4;
         break;
 
     case '5':
         DrawFunct1(1, &numVertices, &arrayVertices, &arrayCores);
-
+        activeMode=5;
         break;
 
     case '6':
         DrawFunct2(0.5, &numVertices, &arrayVertices, &arrayCores);
-
+        activeMode=6;
         break;
 
     case '7':
         DrawFunct3(10, &numVertices, &arrayVertices, &arrayCores);
-
+        activeMode=7;
         break;
 
     case '8':
         DrawFunct4(3, &numVertices, &arrayVertices, &arrayCores);
+        activeMode=8;
+        break;
+
+    case '9':
+        if(activeMode==1)
+        {
+            double a,b,c;
+            printf("Ellipsoid\nInsert radius A: ");
+            scanf("%lf",&a);
+            printf("Insert radius B: ");
+            scanf("%lf",&b);
+            printf("Insert radius C: ");
+            scanf("%lf",&c);
+
+            DrawEllipsoid(20,20, a , b, c, &numVertices, &arrayVertices, &arrayCores);
+        }
+
+        else if(activeMode==2)
+        {
+            double a;
+            printf("Sphere\nInsert radius: ");
+            scanf("%lf",&a);
+
+            DrawSphere(20,20, a , &numVertices, &arrayVertices, &arrayCores);
+        }
+
+        else if(activeMode==3)
+        {
+            double a,b;
+            printf("Torus\nInsert radius: ");
+            scanf("%lf",&a);
+            printf("Insert axial radius: ");
+            scanf("%lf",&b);
+
+            DrawTorus(20,20, a, b, &numVertices, &arrayVertices, &arrayCores);
+        }
+
+        else if(activeMode==4)
+        {
+            double a;
+            printf("Paraboloid\nInsert radius: ");
+            scanf("%lf",&a);
+
+            DrawParaboloid(a, 0.5 , 500, &numVertices, &arrayVertices, &arrayCores);
+        }
+
+        else if(activeMode==5)
+        {
+            double a;
+            printf("Function 1\nInsert factor: ");
+            scanf("%lf",&a);
+
+            DrawFunct1(a, &numVertices, &arrayVertices, &arrayCores);
+        }
+
+        else if(activeMode==6)
+        {
+            double a;
+            printf("Function 2\nInsert factor: ");
+            scanf("%lf",&a);
+
+            DrawFunct2(a, &numVertices, &arrayVertices, &arrayCores);
+        }
+
+        else if(activeMode==7)
+        {
+            double a;
+            printf("Function 3\nInsert factor: ");
+            scanf("%lf",&a);
+
+            DrawFunct3(a, &numVertices, &arrayVertices, &arrayCores);
+        }
+
+        else if(activeMode==8)
+        {
+            double a;
+            printf("Function 4\nInsert factor: ");
+            scanf("%lf",&a);
+
+            DrawFunct4(a, &numVertices, &arrayVertices, &arrayCores);
+        }
+
+        else
+        {
+            printf("Unknown surface!");
+        }
 
         break;
 
