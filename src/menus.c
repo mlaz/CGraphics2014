@@ -222,6 +222,8 @@ static void myMenuEsq( int i )
 
 static void myMenuDir( int i )
 {
+    char fileName[20];
+
 	switch( menu2[i].val ) {
 
     case 'O' :
@@ -239,6 +241,25 @@ static void myMenuDir( int i )
         Translate( &matrizProj, 0, 0, -5 );
 
         glutPostRedisplay();
+
+        break;
+
+
+    case 'L':
+        printf("Name for the file you want to load: ");
+        scanf("%s",&fileName);
+
+        lerDeFicheiro( &fileName, &numVertices,  &arrayVertices, &arrayCores );
+
+        glutPostRedisplay();
+
+        break;
+
+    case 'S':
+        printf("Name for the file you want to save: ");
+        scanf("%s",&fileName);
+
+        escreverEmFicheiro( &fileName, numVertices,  &arrayVertices, &arrayCores );
 
         break;
 

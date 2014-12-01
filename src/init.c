@@ -109,16 +109,8 @@ void inicializarJanela( void )
 
 void inicializarModelos( void )
 {
-  //lerDeFicheiro( "cubo.txt", &numVertices, &arrayVertices, &arrayCores );
+  //Default view
   DrawEllipsoid(20,20, 1.0 , 1.0, 2.0, &numVertices, &arrayVertices, &arrayCores);
-  //DrawSphere(20,20, 1.0 , &numVertices, &arrayVertices, &arrayCores);
-  // DrawTorus(20,20, 0.5, 1.0, &numVertices, &arrayVertices, &arrayCores);
-  //DrawParaboloid(1, 0.5 , 500, &numVertices, &arrayVertices, &arrayCores);
-  //DrawFunct1(1, &numVertices, &arrayVertices, &arrayCores);
-  //DrawFunct2(0.5, numVertices, &arrayVertices, &arrayCores);
-  //DrawFunct3(10, &numVertices, &arrayVertices, &arrayCores);
-  //DrawFunct4(3, &numVertices, &arrayVertices, &arrayCores);
-  //escreverEmFicheiro( "cubo.txt", numVertices,  &arrayVertices, &arrayCores );
   activeMode=1;
 }
 
