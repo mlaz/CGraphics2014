@@ -505,7 +505,7 @@ void DrawFunct1(GLfloat factor,
             {
               coordenadas[idx] = (float) i;
               coordenadas[idx + 1] = (float) j;
-              coordenadas[idx + 2] = sin(j * factor * cos(i));
+              coordenadas[idx + 2] = sin(coordenadas[idx + 1] * factor * cos(coordenadas[idx]));
 
               cores[idx] = 0.0;
               cores[idx + 1] = 0.0;
@@ -514,7 +514,7 @@ void DrawFunct1(GLfloat factor,
 
               coordenadas[idx] = (float) (i + stepsize);
               coordenadas[idx + 1] = (float) j;
-              coordenadas[idx + 2] = sin(j * factor *cos(i + stepsize));
+              coordenadas[idx + 2] = sin(coordenadas[idx + 1] * factor * cos(coordenadas[idx]));
 
               cores[idx] = 0.0;
               cores[idx + 1] = 0.0;
@@ -524,7 +524,7 @@ void DrawFunct1(GLfloat factor,
             }
           coordenadas[idx] = (float) i;
           coordenadas[idx + 1] = (float) (j - stepsize);
-          coordenadas[idx + 2] = sin((j - stepsize) * 1 * cos(i));
+          coordenadas[idx + 2] = sin(coordenadas[idx + 1] * factor * cos(coordenadas[idx]));
 
           cores[idx] = 0.0;
           cores[idx + 1] = 0.0;
@@ -539,7 +539,7 @@ void DrawFunct1(GLfloat factor,
             {
               coordenadas[idx] = (float) i;
               coordenadas[idx + 1] = (float) j;
-              coordenadas[idx + 2] = sin(j * factor * cos(i));
+              coordenadas[idx + 2] = sin(coordenadas[idx + 1] * factor * cos(coordenadas[idx]));
 
               cores[idx] = 0.0;
               cores[idx + 1] = 0.0;
@@ -548,7 +548,7 @@ void DrawFunct1(GLfloat factor,
 
               coordenadas[idx] = (float) (i + stepsize);
               coordenadas[idx + 1] = (float) j;
-              coordenadas[idx + 2] = sin(j * factor *cos(i + stepsize));
+              coordenadas[idx + 2] = sin(coordenadas[idx + 1] * factor *cos(coordenadas[idx]));
 
               cores[idx] = 0.0;
               cores[idx + 1] = 0.0;
@@ -558,7 +558,7 @@ void DrawFunct1(GLfloat factor,
             }
           coordenadas[idx] = (float) i;
           coordenadas[idx + 1] = (float) (j + stepsize);
-          coordenadas[idx + 2] = sin((j + stepsize) * 1 * cos(i));
+          coordenadas[idx + 2] = sin(coordenadas[idx + 1] * factor * cos(coordenadas[idx]));
 
           cores[idx] = 0.0;
           cores[idx + 1] = 0.0;
