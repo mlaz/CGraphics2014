@@ -73,7 +73,7 @@ void inicializarJanela( void )
 {
    /* Caracteristicas da janela de saida */
 
-   glutInitWindowSize( 1024, 1024 ); /* Usar variaveis GLOBAIS para estes parametros */
+   glutInitWindowSize( 800, 800 ); /* Usar variaveis GLOBAIS para estes parametros */
 
    glutInitWindowPosition( 200, 0 );
 
