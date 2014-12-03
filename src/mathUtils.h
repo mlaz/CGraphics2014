@@ -1,23 +1,19 @@
 /*
+ * Computação Visual 2014/2015
+ *
+ * OpenGL
+ *
+ * ############################
+ *
+ * Authors:
+ *
+ * Pedro Amaral, 46370
+ * Miguel Azevedo, 38569
+ *
+ * ############################
+ *
  * mathUtils.h
  *
- * Ficheiro cabecalho do modulo MATH_UTILS.
- *
- * Referencia: http://openglbook.com/the-book/chapter-4-entering-the-third-dimension/
- *
- *             Copyright (C) 2011 by Eddy Luten
- *
- *             Permission is hereby granted, free of charge, to any person obtaining a copy
- *	           of this software and associated documentation files (the "Software"), to deal
- *             in the Software without restriction, including without limitation the rights
- *             to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *             copies of the Software, and to permit persons to whom the Software is
- *             furnished to do so, subject to the following conditions:
- *
- *             The above copyright notice and this permission notice shall be included in
- *             all copies or substantial portions of the Software.
- *
- * J. Madeira - Out/2012
  */
 
 

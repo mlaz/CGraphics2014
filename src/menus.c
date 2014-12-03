@@ -1,9 +1,19 @@
 /*
+ * Computação Visual 2014/2015
+ *
+ * OpenGL
+ *
+ * ############################
+ *
+ * Authors:
+ *
+ * Pedro Amaral, 46370
+ * Miguel Azevedo, 38569
+ *
+ * ############################
+ *
  * menus.c
  *
- * Ficheiro de implementacao do modulo MENUS.
- *
- * J. Madeira - Out/2012
  */
 
 
@@ -247,9 +257,9 @@ static void myMenuDir( int i )
 
     case 'L':
         printf("Name for the file you want to load: ");
-        scanf("%s",&fileName);
+        scanf("%s",fileName);
 
-        lerDeFicheiro( &fileName, &numVertices,  &arrayVertices, &arrayCores );
+        lerDeFicheiro( fileName, &numVertices,  &arrayVertices, &arrayCores );
 
         glutPostRedisplay();
 
@@ -257,9 +267,9 @@ static void myMenuDir( int i )
 
     case 'S':
         printf("Name for the file you want to save: ");
-        scanf("%s",&fileName);
+        scanf("%s",fileName);
 
-        escreverEmFicheiro( &fileName, numVertices,  &arrayVertices, &arrayCores );
+        escreverEmFicheiro( fileName, numVertices,  &arrayVertices, &arrayCores );
 
         break;
 

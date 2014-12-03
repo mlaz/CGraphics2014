@@ -1,9 +1,18 @@
 /*
+ * Computação Visual 2014/2015
+ *
+ * OpenGL
+ *
+ * ############################
+ *
+ * Authors:
+ *
+ * Pedro Amaral, 46370
+ * Miguel Azevedo, 38569
+ *
+ * ############################
+ *
  * globals.h
- *
- * Declaracao de tipos e variaveis globais.
- *
- * J. Madeira - Out/2012
  *
  */
 

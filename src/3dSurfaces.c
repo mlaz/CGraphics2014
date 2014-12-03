@@ -1,9 +1,18 @@
 /*
- * OpenGL_ex_09.c
+ * Computação Visual 2014/2015
  *
- * GLUT : utilizacao de menus
+ * OpenGL
  *
- * J. Madeira - Out/2012
+ * ############################
+ *
+ * Authors:
+ *
+ * Pedro Amaral, 46370
+ * Miguel Azevedo, 38569
+ *
+ * ############################
+ *
+ * 3dSurfaces.c
  *
  */
 

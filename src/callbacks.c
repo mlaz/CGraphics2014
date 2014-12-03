@@ -1,7 +1,18 @@
 /*
- * callbacks.c
+ * Computação Visual 2014/2015
  *
- * J. Madeira - Out/2012
+ * OpenGL
+ *
+ * ############################
+ *
+ * Authors:
+ *
+ * Pedro Amaral, 46370
+ * Miguel Azevedo, 38569
+ *
+ * ############################
+ *
+ * callbacks.c
  *
  */
 

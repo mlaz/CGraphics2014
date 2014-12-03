@@ -1,9 +1,19 @@
 /*
+ * Computação Visual 2014/2015
+ *
+ * OpenGL
+ *
+ * ############################
+ *
+ * Authors:
+ *
+ * Pedro Amaral, 46370
+ * Miguel Azevedo, 38569
+ *
+ * ############################
+ *
  * menus.h
  *
- * Ficheiro cabecalho do modulo MENUS.
- *
- * J. Madeira - Out/2012
  */
 
 

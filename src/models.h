@@ -1,9 +1,19 @@
 /*
+ * Computação Visual 2014/2015
+ *
+ * OpenGL
+ *
+ * ############################
+ *
+ * Authors:
+ *
+ * Pedro Amaral, 46370
+ * Miguel Azevedo, 38569
+ *
+ * ############################
+ *
  * models.h
  *
- * Ficheiro cabecalho do modulo MODELS.
- *
- * J. Madeira - Out/2012
  */
 
 
@@ -67,5 +77,7 @@ void DrawFunct4(GLfloat factor,
                 int* numVertices,
                 GLfloat** arrayVertices,
                 GLfloat** arrayCores);
+
+int fileExists(const char *fname);
 
 #endif

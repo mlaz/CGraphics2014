@@ -1,9 +1,19 @@
 /*
+ * Computação Visual 2014/2015
+ *
+ * OpenGL
+ *
+ * ############################
+ *
+ * Authors:
+ *
+ * Pedro Amaral, 46370
+ * Miguel Azevedo, 38569
+ *
+ * ############################
+ *
  * shaders.c
  *
- * Ficheiro de implementacao do modulo SHADERS.
- *
- * J. Madeira - Out/2012
  */
 
 
@@ -19,9 +29,6 @@
 
 #include "globals.h"
 
-
-// Create a NULL-terminated string by reading the provided file
-// Author : Ed Angel
 
 static char* readShaderSource(const char* shaderFile)
 {

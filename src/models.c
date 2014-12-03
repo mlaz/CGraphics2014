@@ -1,9 +1,19 @@
 /*
+ * Computação Visual 2014/2015
+ *
+ * OpenGL
+ *
+ * ############################
+ *
+ * Authors:
+ *
+ * Pedro Amaral, 46370
+ * Miguel Azevedo, 38569
+ *
+ * ############################
+ *
  * models.c
  *
- * Ficheiro de implementacao do modulo MODELS.
- *
- * J. Madeira - Out/2012
  */
 
 
@@ -905,7 +915,7 @@ void DrawFunct4(GLfloat factor,
 int fileExists(const char *fname)
 {
     FILE *file;
-    if (file = (fopen(fname, "r")))
+    if ((file = (fopen(fname, "r"))))
     {
         fclose(file);
         return 1;

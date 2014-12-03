@@ -1,9 +1,19 @@
 /*
+ * Computação Visual 2014/2015
+ *
+ * OpenGL
+ *
+ * ############################
+ *
+ * Authors:
+ *
+ * Pedro Amaral, 46370
+ * Miguel Azevedo, 38569
+ *
+ * ############################
+ *
  * shaders.h
  *
- * Ficheiro cabecalho do modulo SHADERS.
- *
- * J. Madeira - Out/2012
  */
 
 
