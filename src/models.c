@@ -124,7 +124,7 @@ void escreverEmFicheiro( char* nome, int numVertices, GLfloat** arrayVertices, G
   GLfloat* cores;
 
   int writeInFile=0;
-  char *option;
+  char *option = NULL;
 
   //File exists
   if(fileExists(nome))
@@ -507,7 +507,7 @@ void DrawFunct1(GLfloat factor,
   unsigned int idx = 0;
   int npontos = 0;
   int increm = 1;
-  for(i = (float) -(levels/2); i <= (float) levels/2; i += stepsize)
+  for(i = (float) -(levels/2); i < (float) levels/2; i += stepsize)
     {
       if (increm == 1)
         {
@@ -616,7 +616,7 @@ void DrawFunct2(GLfloat factor,
   unsigned int idx = 0;
   int npontos = 0;
   int increm = 1;
-  for(i = (float) -(levels/2); i <= (float) levels/2; i += stepsize)
+  for(i = (float) -(levels/2); i < (float) levels/2; i += stepsize)
     {
       if (increm == 1)
         {
@@ -726,7 +726,7 @@ void DrawFunct3(GLfloat factor,
   unsigned int idx = 0;
   int npontos = 0;
   int increm = 1;
-  for(i = (float) -(levels/2); i <= (float) levels/2; i += stepsize)
+  for(i = (float) -(levels/2); i < (float) levels/2; i += stepsize)
     {
       if (increm == 1)
         {
@@ -836,7 +836,7 @@ void DrawFunct4(GLfloat factor,
   unsigned int idx = 0;
   int npontos = 0;
   int increm = 1;
-  for(i = (float) -(levels/2); i <= (float) levels/2; i += stepsize)
+  for(i = (float) -(levels/2); i < (float) levels/2; i += stepsize)
     {
       if (increm == 1)
         {
