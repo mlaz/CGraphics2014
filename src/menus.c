@@ -85,6 +85,7 @@ static menuItemStruct menu2[] = {
                 {"Load Model",               'L'},
                 {"Save Model",               'S'},
                 {"----------------------",   '-'},
+                {"Original Surface Position",'A'},
 				{"Quit application",         '1'}
 };
 
@@ -270,6 +271,23 @@ static void myMenuDir( int i )
         scanf("%s",fileName);
 
         escreverEmFicheiro( fileName, numVertices,  &arrayVertices, &arrayCores );
+
+        break;
+
+    case 'A':
+        anguloRotXX = 0;
+
+        anguloRotYY = 0;
+
+        anguloRotZZ = 0;
+
+        factorEscX = 0.5;
+
+        factorEscY = 0.5;
+
+        factorEscZ = 0.5;
+
+        glutPostRedisplay();
 
         break;
 
